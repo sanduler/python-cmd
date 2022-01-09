@@ -25,6 +25,19 @@ def main(argv):
     except getopt.GetoptError:
         print("python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
 
+    for opt, arg in opts:
+        if opt == "-h":
+            print(
+                "python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
+            sys.exit(2)
+        elif opt in ("w", "--word"):
+            initial_word = arg
+        elif opt in ("c", "--generatecount"):
+            gen_count = arg
+        elif opt in ("r", "--generateresult"):
+            gen_result = arg
+        elif opt in ("o", "outputfile"):
+            result_file_name = arg
     if os.path.exists(res_file_name):
         print("Remove the existing file....")
         os.removal(res_file_name)
