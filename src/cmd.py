@@ -51,4 +51,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-    main("ruben", 3, "result.txt")
+    main(sys.argv[1:])
