@@ -38,14 +38,14 @@ def main(argv):
             gen_result = arg
         elif opt in ("o", "outputfile"):
             result_file_name = arg
-    if os.path.exists(res_file_name):
-        print("Remove the existing file....")
-        os.removal(res_file_name)
 
-    n = 100000
-    for i in pyprind.prog_bar(range(n)):
-        result = ''.join((random.sample(initial_word, gen_word_count)))
-        file = open(res_file_name, "a")
+    if os.path.exists(result_file_name):
+        print("Remove the existing file....")
+        os.removal(result_file_name)
+
+    for i in pyprind.prog_bar(range(int(gen_result))):
+        result = ''.join((random.sample(initial_word, int(gen_count))))
+        file = open(result_file_name, "a")
         file.write(result + "\n")
         file.close
 
