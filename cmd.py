@@ -1,7 +1,6 @@
 # Name: Ruben Sanduleac
 # Date: January 8th, 2022
-# Description: Simple CMD Line Application
-
+# Description: Simple CMD Line Applicationxw
 import random
 import string
 import os
