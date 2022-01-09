@@ -1,6 +1,7 @@
 import random
 import string
 import os
+import pyprind
 
 # Name: Ruben Sanduleac
 # Date: January 8th, 2022
@@ -12,8 +13,8 @@ def main(initial_word, gen_word_count, res_file_name):
         print("Remove the existing file....")
         os.removal(res_file_name)
 
-    n = 1000
-    for i in range(n):
+    n = 100000
+    for i in pyprind.prog_bar(range(n)):
         result = ''.join((random.sample(initial_word, gen_word_count)))
         file = open(res_file_name, "a")
         file.write(result + "\n")
@@ -21,4 +22,4 @@ def main(initial_word, gen_word_count, res_file_name):
 
 
 if __name__ == "__main__":
-    main("ruben", 3, "res.txt")
+    main("ruben", 3, "result.txt")
