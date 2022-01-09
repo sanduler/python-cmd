@@ -47,6 +47,7 @@ def main(argv):
         file = open(result_file_name, "a")
         file.write(result + "\n")
         file.close
+        i += 1
 
 
 if __name__ == "__main__":
