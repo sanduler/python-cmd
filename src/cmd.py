@@ -30,13 +30,13 @@ def main(argv):
             print(
                 "python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
             sys.exit(2)
-        elif opt in ("w", "--word"):
+        elif opt in ("-w", "--word"):
             initial_word = arg
-        elif opt in ("c", "--generatecount"):
+        elif opt in ("-c", "--generatecount"):
             gen_count = arg
-        elif opt in ("r", "--generateresult"):
+        elif opt in ("-r", "--generateresult"):
             gen_result = arg
-        elif opt in ("o", "outputfile"):
+        elif opt in ("-o", "outputfile"):
             result_file_name = arg
 
     if os.path.exists(result_file_name):
@@ -44,6 +44,7 @@ def main(argv):
         os.removal(result_file_name)
 
     for i in pyprind.prog_bar(range(int(gen_result))):
+        # progress for generating a word
         result = ''.join((random.sample(initial_word, int(gen_count))))
         file = open(result_file_name, "a")
         file.write(result + "\n")
