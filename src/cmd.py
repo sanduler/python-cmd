@@ -23,7 +23,7 @@ def main(argv):
         opts, args = getopt.getopt(
             argv, "hw:c:r:o:", ["word=", "count=", "result=", "output="])
     except getopt.GetoptError:
-        pass
+        print("python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
 
     if os.path.exists(res_file_name):
         print("Remove the existing file....")
