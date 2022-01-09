@@ -1,1 +1,1 @@
-# Simple Comand Line Application
+# Simple Command Line Application
