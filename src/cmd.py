@@ -2,13 +2,29 @@ import random
 import string
 import os
 import pyprind
+import sys
+import getopt
 
 # Name: Ruben Sanduleac
 # Date: January 8th, 2022
-# Description: Simple CMD Line Applicationxw
+# Description: Simple CMD Line Application
+
+# cp -r <file-awal> >file-copy>
+#
 
 
-def main(initial_word, gen_word_count, res_file_name):
+def main(argv):
+    result_file_name = ''
+    initial_word = ''
+    gen_count = 0
+    gen_result = 0
+
+    try:
+        opts, args = getopt.getopt(
+            argv, "hw:c:r:o:", ["word=", "count=", "result=", "output="])
+    except getopt.GetoptError:
+        pass
+
     if os.path.exists(res_file_name):
         print("Remove the existing file....")
         os.removal(res_file_name)
