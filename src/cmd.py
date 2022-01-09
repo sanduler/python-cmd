@@ -1,25 +1,54 @@
 import random
 import string
 import os
+import sys
+import getopt
 import pyprind
-
 # Name: Ruben Sanduleac
 # Date: January 8th, 2022
-# Description: Simple CMD Line Applicationxw
+# Description: Simple CMD Line Application
+
+# cp -r <file-awal> >file-copy>
 
 
-def main(initial_word, gen_word_count, res_file_name):
-    if os.path.exists(res_file_name):
+def main(argv):
+    result_file_name = ''
+    initial_word = ''
+    gen_count = 0
+    gen_result = 0
+
+    try:
+        opts, args = getopt.getopt(
+            argv, "hw:c:r:o:", ["word=", "count=", "result=", "output="])
+    except getopt.GetoptError:
+        print("python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
+
+    for opt, arg in opts:
+        if opt == "-h":
+            print(
+                "python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
+            sys.exit(2)
+        elif opt in ("-w", "--word"):
+            initial_word = arg
+        elif opt in ("-c", "--generatecount"):
+            gen_count = arg
+        elif opt in ("-r", "--generateresult"):
+            gen_result = arg
+        elif opt in ("-o", "--outputfile"):
+            result_file_name = arg
+
+    if os.path.exists(result_file_name):
         print("Remove the existing file....")
-        os.removal(res_file_name)
+        os.removal(result_file_name)
 
-    n = 100000
-    for i in pyprind.prog_bar(range(n)):
-        result = ''.join((random.sample(initial_word, gen_word_count)))
-        file = open(res_file_name, "a")
+    for i in pyprind.prog_bar(range(int(gen_result))):
+        # progress for generating a word
+        result = ''.join((random.sample(initial_word, int(gen_count))))
+        file = open(result_file_name, "a")
         file.write(result + "\n")
         file.close
+        i += 1
 
 
 if __name__ == "__main__":
-    main("ruben", 3, "result.txt")
+    main(sys.argv[1:])
