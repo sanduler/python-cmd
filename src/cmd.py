@@ -22,4 +22,4 @@ def main(initial_word, gen_word_count, res_file_name):
 
 
 if __name__ == "__main__":
-    main("ruben", 3, "res.txt")
+    main("ruben", 3, "result.txt")
