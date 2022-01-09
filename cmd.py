@@ -18,3 +18,7 @@ def main(initial_word, gen_word_count, res_file_name):
         file = open(res_file_name, "a")
         file.write(result + "\n")
         file.close
+
+
+if __name__ == "_main__":
+    main("Ruben", 3, "res.txt")
