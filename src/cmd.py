@@ -1,16 +1,14 @@
 import random
 import string
 import os
-import pyprind
 import sys
 import getopt
-
+import pyprind
 # Name: Ruben Sanduleac
 # Date: January 8th, 2022
 # Description: Simple CMD Line Application
 
 # cp -r <file-awal> >file-copy>
-#
 
 
 def main(argv):
@@ -36,7 +34,7 @@ def main(argv):
             gen_count = arg
         elif opt in ("-r", "--generateresult"):
             gen_result = arg
-        elif opt in ("-o", "outputfile"):
+        elif opt in ("-o", "--outputfile"):
             result_file_name = arg
 
     if os.path.exists(result_file_name):
