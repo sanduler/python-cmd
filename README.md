@@ -1,1 +1,1 @@
-# python-cmd
+# Simple Comand Line Application
