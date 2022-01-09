@@ -12,10 +12,10 @@ import pyprind
 
 
 def main(argv):
-    result_file_name = ''
-    initial_word = ''
-    gen_count = 0
-    gen_result = 0
+    file_name = ''
+    word = ''
+    count = 0
+    create_result = 0
 
     try:
         opts, args = getopt.getopt(
@@ -29,22 +29,22 @@ def main(argv):
                 "python cmd.py -w <initial word> -c <generate count> -r <generate result> -o <result file name>")
             sys.exit(2)
         elif opt in ("-w", "--word"):
-            initial_word = arg
+            word = arg
         elif opt in ("-c", "--generatecount"):
-            gen_count = arg
+            count = arg
         elif opt in ("-r", "--generateresult"):
-            gen_result = arg
+            create_result = arg
         elif opt in ("-o", "--outputfile"):
-            result_file_name = arg
+            file_name = arg
 
-    if os.path.exists(result_file_name):
+    if os.path.exists(file_name):
         print("Remove the existing file....")
-        os.removal(result_file_name)
+        os.removal(file_name)
 
-    for i in pyprind.prog_bar(range(int(gen_result))):
+    for i in pyprind.prog_bar(range(int(create_result))):
         # progress for generating a word
-        result = ''.join((random.sample(initial_word, int(gen_count))))
-        file = open(result_file_name, "a")
+        result = ''.join((random.sample(word, int(count))))
+        file = open(file_name, "a")
         file.write(result + "\n")
         file.close
         i += 1
